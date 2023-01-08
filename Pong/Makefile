@@ -2,12 +2,12 @@
 CC := g++
 
 # set the compiler flags
-CFLAGS := `sdl2-config --libs --cflags` -ggdb3 -O0 -Wall -lm
+CFLAGS := `sdl2-config --libs --cflags` -ggdb3 -O0 -Wall -lm -lSDL2_image
 # add header files here
-HDRS := pong.hpp paddle.hpp
+HDRS := pong.hpp paddle.hpp ball.hpp
 
 # add source files here
-SRCS := main.cpp pong.cpp paddle.cpp
+SRCS := main.cpp pong.cpp paddle.cpp ball.cpp
 
 # generate names of object files
 OBJS := $(SRCS:.c=.o)

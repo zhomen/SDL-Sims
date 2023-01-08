@@ -5,6 +5,8 @@ Pong::Pong(): m_left_paddle(0, (400 / 2) - 50), m_right_paddle(400 - 50, (400 / 
     SDL_CreateWindowAndRenderer(680, 480, SDL_WINDOW_RESIZABLE,
         &m_game_window, &m_game_window_renderer);
     SDL_RenderSetLogicalSize(m_game_window_renderer, 400, 400);
+
+    m_ball.init(m_game_window_renderer, (400 / 2) - 12, (400 / 2) - 12);
 }
 
 void Pong::game_loop()
@@ -33,14 +35,16 @@ void Pong::update(double delta_time)
 {
 	m_left_paddle.update(delta_time);
 	m_right_paddle.update(delta_time);
+    m_ball.update(delta_time);
 }
 
 void Pong::draw()
 {
     SDL_RenderClear(m_game_window_renderer);
 
-    m_left_paddle.draw(m_game_window_renderer);
-    m_right_paddle.draw(m_game_window_renderer);
+        m_ball.draw(m_game_window_renderer);
+        m_left_paddle.draw(m_game_window_renderer);
+        m_right_paddle.draw(m_game_window_renderer);
 
     SDL_RenderPresent(m_game_window_renderer);
 }

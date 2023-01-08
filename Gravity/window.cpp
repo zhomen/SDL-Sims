@@ -29,7 +29,7 @@ void Window::game_loop()
             }
         }
 
-        update(m_clock.get_delta());
+        update(1.0/60.0);
         draw();
         m_clock.tick();
     }
